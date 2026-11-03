@@ -117,7 +117,7 @@ class GoalCondBuffer(EpisodicTensorDictReplayBuffer):
         print(f"Allocating buffer on {cfg.device} of size {max_size / 1024**3:.3f} GB")
         device = torch.device(cfg.device)
         super().__init__(
-            storage=LazyTensorStorage(max_size, device),
+            storage=LazyTensorStorage(max_size, device=device),
             sampler=SliceSampler(
                 slice_len=(cfg.n_steps + 1), traj_key="episode", end_key=None, truncated_key=None, strict_length=True
             ),

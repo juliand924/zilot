@@ -34,10 +34,23 @@ The resulting method can learn from offline, suboptimal data, and is capable of 
 python3.10 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
-pip install torch==2.3.1 --index-url https://download.pytorch.org/whl/cu121
+```
+### Install torch
+cuda
+```
+pip install torch==2.11.0 --index-url https://download.pytorch.org/whl/cu121
+```
+rocm 7.2
+```
+pip install torch==2.11.0 --index-url https://download.pytorch.org/whl/rocm7.2
+```
+Install the requirements 
+```
 pip install -r requirements.txt
 pip install -e .
 ```
+
+
 or
 ```
 ./make_pip_env.sh
