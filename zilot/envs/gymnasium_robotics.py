@@ -374,28 +374,28 @@ ENVS = {
         },
     },
     "fetch_reach": {
-        "name": "FetchReach-v2",
+        "name": "FetchReach-v4",
         "wrapper": FetchEnvWrapper,
         "cfg_changes": {
             **fetch_kwargs,
         },
     },
     "fetch_push": {
-        "name": "FetchPush-v2",
+        "name": "FetchPush-v4",
         "wrapper": FetchEnvWrapper,
         "cfg_changes": {
             **fetch_kwargs,
         },
     },
     "fetch_slide": {
-        "name": "FetchSlide-v2",
+        "name": "FetchSlide-v4",
         "wrapper": FetchEnvWrapper,
         "cfg_changes": {
             **fetch_kwargs,
         },
     },
     "fetch_pick_and_place": {
-        "name": "FetchPickAndPlace-v2",
+        "name": "FetchPickAndPlace-v4",
         "wrapper": FetchEnvWrapper,
         "cfg_changes": {
             **fetch_kwargs,

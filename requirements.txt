@@ -23,10 +23,10 @@ tensordict==0.14.3
 torchrl==0.14.1
 tqdm==4.66.2
 virtualenv==20.25.1
-wandb==0.17.8
-gymnasium==0.29.1
-gymnasium-robotics==1.2.4
+wandb==0.18.5
+gymnasium==1.4.0
+gymnasium-robotics==1.4.2
 einops==0.7.0
-minari==0.4.3
+minari==0.5.3
 zarr==2.18.2
 dm-control==1.0.8

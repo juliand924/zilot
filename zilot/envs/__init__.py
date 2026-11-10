@@ -26,7 +26,7 @@ def make_env(cfg) -> EnvMixin:
     exception = None
     for fn in [make_gr_env, make_mujoco_env]:
         try:
-            env: Env = fn(cfg, render_mode="rgb_array", max_episode_steps=10_000_000, autoreset=False)
+            env: Env = fn(cfg, render_mode="rgb_array", max_episode_steps=10_000_000)
         except KeyError:
             continue
         except Exception as e:
