@@ -49,7 +49,11 @@ Install the requirements
 pip install -r requirements.txt
 pip install -e .
 ```
+#### Running with ROCm
 
+```
+env -u EGL_PLATFORM   MUJOCO_GL=glfw PYGLFW_LIBRARY_VARIANT=wayland   EGL_PLATFORM=wayland EGL_LOG_LEVEL=debug python3 main.py job=dset name=fsl2D-dset-500k env=fetch_slide_large_2D steps=10_000 num_rollouts=5 log_dset_freq=250_000
+```
 
 or
 ```
