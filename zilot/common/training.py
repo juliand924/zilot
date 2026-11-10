@@ -147,7 +147,8 @@ def online(cfg: Container, model: Model, env: Env, logger: Logger) -> None:
             obs, _, terminated, truncated, _ = train_env.step(action)
             truncated = truncated or n >= max_n
             if render:
-                imgs.append(cv2.resize(train_env.render(), (256, 256), interpolation=cv2.INTER_LINEAR))
+                frame = train_env.render()
+                imgs.append(cv2.resize(frame, (256, 256), interpolation=cv2.INTER_LINEAR))
         if render:
             vid = np.stack(imgs, axis=0)
         return n, torch.stack(transitions), logs, vid if render else None
