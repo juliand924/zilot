@@ -1,7 +1,23 @@
 import os
 import sys
 
+import mujoco
+
+_bootstrap_model = mujoco.MjModel.from_xml_string("""
+<mujoco>
+  <worldbody>
+    <geom type="plane" size="1 1 0.1"/>
+  </worldbody>
+</mujoco>
+""")
+_bootstrap_gl = mujoco.GLContext(64, 64)
+_bootstrap_gl.make_current()
+_bootstrap_mjr = mujoco.MjrContext(
+    _bootstrap_model,
+    mujoco.mjtFontScale.mjFONTSCALE_150,
+)
 os.environ["HYDRA_FULL_ERROR"] = "1"
+
 sys.stdout = os.fdopen(sys.stdout.fileno(), "w", 1)
 sys.stderr = os.fdopen(sys.stderr.fileno(), "w", 1)
 
@@ -28,6 +44,14 @@ torch.set_float32_matmul_precision("high")
 @hydra.main(config_path="cfg", config_name="config", version_base="1.3.2")
 def main(cfg: Container) -> None:
     parse_cfg(cfg)
+    import os
+    import threading
+    print("startup:", os.getpid(), threading.get_ident(),
+        "MUJOCO_GL=", os.environ.get("MUJOCO_GL"),
+        "PYGLFW_LIBRARY_VARIANT=", os.environ.get("PYGLFW_LIBRARY_VARIANT"),
+        "EGL_PLATFORM=", os.environ.get("EGL_PLATFORM"),
+        flush=True)
+
 
     project_name = "zero-shot-il-ot"
     if "WORK" in os.environ.keys():
